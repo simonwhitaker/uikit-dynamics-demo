@@ -19,8 +19,6 @@
 		F46A940F18D648220064B2B8 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46A940E18D648220064B2B8 /* XCTest.framework */; };
 		F46A941018D648220064B2B8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46A93EF18D648220064B2B8 /* Foundation.framework */; };
 		F46A941118D648220064B2B8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F46A93F318D648220064B2B8 /* UIKit.framework */; };
-		F46A941918D648220064B2B8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F46A941718D648220064B2B8 /* InfoPlist.strings */; };
-		F46A941B18D648220064B2B8 /* Dynamics_DemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F46A941A18D648220064B2B8 /* Dynamics_DemoTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,9 +48,6 @@
 		F46A940718D648220064B2B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F46A940D18D648220064B2B8 /* Dynamics DemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Dynamics DemoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F46A940E18D648220064B2B8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		F46A941618D648220064B2B8 /* Dynamics DemoTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Dynamics DemoTests-Info.plist"; sourceTree = "<group>"; };
-		F46A941818D648220064B2B8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F46A941A18D648220064B2B8 /* Dynamics_DemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dynamics_DemoTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +78,6 @@
 			isa = PBXGroup;
 			children = (
 				F46A93F518D648220064B2B8 /* Dynamics Demo */,
-				F46A941418D648220064B2B8 /* Dynamics DemoTests */,
 				F46A93EE18D648220064B2B8 /* Frameworks */,
 				F46A93ED18D648220064B2B8 /* Products */,
 			);
@@ -130,24 +124,6 @@
 				F46A93F818D648220064B2B8 /* InfoPlist.strings */,
 				F46A93FB18D648220064B2B8 /* main.m */,
 				F46A93FD18D648220064B2B8 /* Dynamics Demo-Prefix.pch */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		F46A941418D648220064B2B8 /* Dynamics DemoTests */ = {
-			isa = PBXGroup;
-			children = (
-				F46A941A18D648220064B2B8 /* Dynamics_DemoTests.m */,
-				F46A941518D648220064B2B8 /* Supporting Files */,
-			);
-			path = "Dynamics DemoTests";
-			sourceTree = "<group>";
-		};
-		F46A941518D648220064B2B8 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				F46A941618D648220064B2B8 /* Dynamics DemoTests-Info.plist */,
-				F46A941718D648220064B2B8 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -239,7 +215,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F46A941918D648220064B2B8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,7 +235,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F46A941B18D648220064B2B8 /* Dynamics_DemoTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,14 +263,6 @@
 				F46A940218D648220064B2B8 /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F46A941718D648220064B2B8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F46A941818D648220064B2B8 /* en */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
