@@ -20,8 +20,10 @@
     [super viewDidLoad];
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     
-    UIView *bangLabel = self.bangLabel;
+    UIView *bannerView = self.bannerView;
+    UILabel *bangLabel = self.bangLabel;
     bangLabel.layer.cornerRadius = bangLabel.bounds.size.width / 2;
+    bangLabel.textColor = bannerView.backgroundColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {

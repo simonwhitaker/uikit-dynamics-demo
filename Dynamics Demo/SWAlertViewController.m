@@ -23,9 +23,11 @@
     alertView.layer.cornerRadius = 10.0;
     alertView.layer.masksToBounds = YES;
     
+    // Configure the animator
     UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     self.animator = animator;
     
+    // Configure the gravity behavior
     UIGravityBehavior *gravity = [[UIGravityBehavior alloc] init];
     gravity.magnitude = 4;
     [self.animator addBehavior:gravity];
@@ -54,10 +56,9 @@
     
     [self.gravity addItem:alertView];
     
-    __weak __typeof__(self) weakSelf = self;
-    
+    __weak __typeof(self) weakSelf = self;
     self.gravity.action = ^{
-        if (!CGRectIntersectsRect(alertView.frame, alertBackgroundView.frame)) {
+        if (!CGRectIntersectsRect(alertView.frame, weakSelf.view.frame)) {
             [weakSelf.gravity removeItem:alertView];
             [UIView animateWithDuration:0.1 animations:^{
                 alertBackgroundView.alpha = 0.0;
