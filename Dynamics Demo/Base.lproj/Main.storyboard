@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CAL-vL-Fj2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CAL-vL-Fj2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -79,7 +79,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Alert View" id="bmh-Nb-chK"/>
+                    <tabBarItem key="tabBarItem" title="Alert View" image="Alert View" id="bmh-Nb-chK"/>
                     <connections>
                         <outlet property="alertBackgroundView" destination="PCP-3d-Ubc" id="5cO-4W-k7g"/>
                         <outlet property="alertView" destination="06w-VO-Zul" id="Pvi-bk-DgJ"/>
@@ -132,7 +132,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Banner" id="zVq-sq-BwR"/>
+                    <tabBarItem key="tabBarItem" title="Banner" image="Banner" id="zVq-sq-BwR"/>
                     <connections>
                         <outlet property="bangLabel" destination="fTL-rm-OB0" id="TTq-bd-3Jb"/>
                         <outlet property="bannerView" destination="B87-HT-aaK" id="mab-Vw-Pnj"/>
@@ -143,6 +143,10 @@
             <point key="canvasLocation" x="465" y="523"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Alert View" width="25" height="25"/>
+        <image name="Banner" width="25" height="25"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
