@@ -17,6 +17,8 @@
 		F46A940318D648220064B2B8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F46A940118D648220064B2B8 /* Main.storyboard */; };
 		F46A940618D648220064B2B8 /* SWBannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F46A940518D648220064B2B8 /* SWBannerViewController.m */; };
 		F46A940818D648220064B2B8 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F46A940718D648220064B2B8 /* Images.xcassets */; };
+		F4DF214D190FEBB1008C6B12 /* SWDragViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4DF214C190FEBB1008C6B12 /* SWDragViewController.m */; };
+		F4DF2151190FF48D008C6B12 /* Shark.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F4DF2150190FF48D008C6B12 /* Shark.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,9 @@
 		F46A940518D648220064B2B8 /* SWBannerViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SWBannerViewController.m; sourceTree = "<group>"; };
 		F46A940718D648220064B2B8 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F46A940E18D648220064B2B8 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F4DF214B190FEBB1008C6B12 /* SWDragViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWDragViewController.h; sourceTree = "<group>"; };
+		F4DF214C190FEBB1008C6B12 /* SWDragViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWDragViewController.m; sourceTree = "<group>"; };
+		F4DF2150190FF48D008C6B12 /* Shark.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Shark.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +96,11 @@
 				F43DD06718DF056C003E0201 /* SWAlertViewController.m */,
 				F46A940418D648220064B2B8 /* SWBannerViewController.h */,
 				F46A940518D648220064B2B8 /* SWBannerViewController.m */,
+				F4DF2150190FF48D008C6B12 /* Shark.jpg */,
 				F46A940718D648220064B2B8 /* Images.xcassets */,
 				F46A93F618D648220064B2B8 /* Supporting Files */,
+				F4DF214B190FEBB1008C6B12 /* SWDragViewController.h */,
+				F4DF214C190FEBB1008C6B12 /* SWDragViewController.m */,
 			);
 			path = "Dynamics Demo";
 			sourceTree = "<group>";
@@ -162,6 +170,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F46A940818D648220064B2B8 /* Images.xcassets in Resources */,
+				F4DF2151190FF48D008C6B12 /* Shark.jpg in Resources */,
 				F46A93FA18D648220064B2B8 /* InfoPlist.strings in Resources */,
 				F46A940318D648220064B2B8 /* Main.storyboard in Resources */,
 			);
@@ -177,6 +186,7 @@
 				F46A940618D648220064B2B8 /* SWBannerViewController.m in Sources */,
 				F46A940018D648220064B2B8 /* SWAppDelegate.m in Sources */,
 				F46A93FC18D648220064B2B8 /* main.m in Sources */,
+				F4DF214D190FEBB1008C6B12 /* SWDragViewController.m in Sources */,
 				F43DD06818DF056C003E0201 /* SWAlertViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

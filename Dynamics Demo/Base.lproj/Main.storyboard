@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CAL-vL-Fj2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5056" systemVersion="13C1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="CAL-vL-Fj2">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
     </dependencies>
@@ -17,6 +17,7 @@
                     <connections>
                         <segue destination="ZB0-ZX-fRe" kind="relationship" relationship="viewControllers" id="Wsq-dt-jWt"/>
                         <segue destination="vXZ-lx-hvc" kind="relationship" relationship="viewControllers" id="Phm-RJ-hjI"/>
+                        <segue destination="JGx-9u-wF0" kind="relationship" relationship="viewControllers" id="UVy-Pn-nNn"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GlO-jY-lJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -142,10 +143,42 @@
             </objects>
             <point key="canvasLocation" x="465" y="523"/>
         </scene>
+        <!--Drag View Controller - Drag-->
+        <scene sceneID="lk5-gG-iJ8">
+            <objects>
+                <viewController id="JGx-9u-wF0" customClass="SWDragViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="A6L-s4-Y99">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="Shark.jpg" id="Mza-K6-6ZR">
+                                <rect key="frame" x="40" y="178" width="240" height="160"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="AzT-0o-qjD" appends="YES" id="cUH-xK-771"/>
+                                </connections>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Drag" image="Photo" id="tPi-HC-R55"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dKZ-ip-mUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="AzT-0o-qjD">
+                    <connections>
+                        <action selector="handlePanGestureRecognizer:" destination="JGx-9u-wF0" id="69j-7m-664"/>
+                    </connections>
+                </panGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="903" y="523"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Alert View" width="25" height="25"/>
         <image name="Banner" width="25" height="25"/>
+        <image name="Photo" width="25" height="25"/>
+        <image name="Shark.jpg" width="640" height="426"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
