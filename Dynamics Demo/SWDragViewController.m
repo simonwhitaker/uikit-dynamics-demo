@@ -21,18 +21,18 @@
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 }
 
-- (IBAction)handlePanGestureRecognizer:(UIPanGestureRecognizer*)panGestureRecognizer {
-    if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        UIView *view = panGestureRecognizer.view;
-        CGPoint p = [panGestureRecognizer locationInView:view];
+- (IBAction)handlePanGestureRecognizer:(UIPanGestureRecognizer*)recognizer {
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        UIView *view = recognizer.view;
+        CGPoint p = [recognizer locationInView:view];
         UIOffset offset = UIOffsetMake(p.x - view.bounds.size.width / 2, p.y - view.bounds.size.height / 2);
-        self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:offset attachedToAnchor:[panGestureRecognizer locationInView:self.view]];
+        self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:offset attachedToAnchor:[recognizer locationInView:self.view]];
         [self.animator addBehavior:self.attachmentBehavior];
-    } else if (panGestureRecognizer.state == UIGestureRecognizerStateChanged) {
-        CGPoint delta = [panGestureRecognizer translationInView:self.view];
+    } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        CGPoint delta = [recognizer translationInView:self.view];
         self.attachmentBehavior.anchorPoint = CGPointApplyAffineTransform(self.attachmentBehavior.anchorPoint, CGAffineTransformMakeTranslation(delta.x, delta.y));
-        [panGestureRecognizer setTranslation:CGPointZero inView:self.view];
-    } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded || panGestureRecognizer.state == UIGestureRecognizerStateCancelled || panGestureRecognizer.state == UIGestureRecognizerStateFailed) {
+        [recognizer setTranslation:CGPointZero inView:self.view];
+    } else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateFailed) {
         [self.animator removeAllBehaviors];
     }
 }
