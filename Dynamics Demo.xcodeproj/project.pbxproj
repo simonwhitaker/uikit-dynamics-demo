@@ -96,11 +96,11 @@
 				F43DD06718DF056C003E0201 /* SWAlertViewController.m */,
 				F46A940418D648220064B2B8 /* SWBannerViewController.h */,
 				F46A940518D648220064B2B8 /* SWBannerViewController.m */,
-				F4DF2150190FF48D008C6B12 /* Shark.jpg */,
-				F46A940718D648220064B2B8 /* Images.xcassets */,
-				F46A93F618D648220064B2B8 /* Supporting Files */,
 				F4DF214B190FEBB1008C6B12 /* SWDragViewController.h */,
 				F4DF214C190FEBB1008C6B12 /* SWDragViewController.m */,
+				F46A940718D648220064B2B8 /* Images.xcassets */,
+				F4DF2150190FF48D008C6B12 /* Shark.jpg */,
+				F46A93F618D648220064B2B8 /* Supporting Files */,
 			);
 			path = "Dynamics Demo";
 			sourceTree = "<group>";
