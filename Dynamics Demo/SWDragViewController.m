@@ -66,24 +66,31 @@ static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
         // Make sure any existing behaviors are removed before adding new ones
         [self.animator removeAllBehaviors];
         
+        // Get the point of the touch within the view we're dragging, and use that point as the connection point for the attachment behavior. In other words, it makes a difference whether you drag from the edge of the view or the center, just as it would if you dragged a real object around on a table top.
         CGPoint p = [recognizer locationInView:view];
         UIOffset offset = UIOffsetMake(p.x - view.bounds.size.width / 2, p.y - view.bounds.size.height / 2);
+        
+        // Create an attachment behavior that connects the point we first dragged to an anchor point. We'll update the anchor point as we drag, and let UIKit Dynamics do the rest.
         self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:offset attachedToAnchor:[recognizer locationInView:self.view]];
         [self.animator addBehavior:self.attachmentBehavior];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
+        // Just move the attachment behavior's anchor point, let UIKit Dynamics animate the view acordingly.
         CGPoint delta = [recognizer translationInView:self.view];
         self.attachmentBehavior.anchorPoint = CGPointApplyAffineTransform(self.attachmentBehavior.anchorPoint, CGAffineTransformMakeTranslation(delta.x, delta.y));
         [recognizer setTranslation:CGPointZero inView:self.view];
     } else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateFailed) {
+        // Check the velocity we were dragging at.
         CGPoint velocity = [recognizer velocityInView:self.view];
 
         [self.animator removeBehavior:self.attachmentBehavior];
         
-        // If velocity in simple points/second is higher than a threshold, animate off screen
+        // If velocity in simple points/second is higher than a threshold, fling the view offscreen
         if (sqrt(velocity.x * velocity.x + velocity.y * velocity.y) > kDismissalSwipeVelocityThreshold) {
+            // Use a UIDynamicItemBehavior to continue the view moving with the same velocity as when we finished dragging
             UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
             [itemBehavior addLinearVelocity:velocity forItem:view];
             
+            // And add some gravity to make it feel more physical - for example, if you fling the view upwards it'll eventually fall back down
             UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[view]];
             gravity.magnitude = 4;
             [self.animator addBehavior:itemBehavior];
@@ -99,7 +106,7 @@ static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
                 }
             };
         } else {
-            // Snap back to home position
+            // They didn't fling the view with sufficient vim, so just snap it back into place
             UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:view snapToPoint:self.sourceImageView.center];
             [self.animator addBehavior:snapBehavior];
         }
