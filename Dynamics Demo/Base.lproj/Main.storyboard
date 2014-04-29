@@ -152,10 +152,11 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="Shark.jpg" id="Mza-K6-6ZR">
-                                <rect key="frame" x="40" y="178" width="240" height="160"/>
+                                <rect key="frame" x="120" y="244" width="80" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
+                                <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="AzT-0o-qjD" appends="YES" id="cUH-xK-771"/>
+                                    <outletCollection property="gestureRecognizers" destination="ULP-cz-dKe" appends="YES" id="vqh-Ef-sgC"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -163,13 +164,16 @@
                         <gestureRecognizers/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Drag" image="Photo" id="tPi-HC-R55"/>
+                    <connections>
+                        <outlet property="sourceImageView" destination="Mza-K6-6ZR" id="uWd-La-OSm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dKZ-ip-mUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="AzT-0o-qjD">
+                <tapGestureRecognizer id="ULP-cz-dKe">
                     <connections>
-                        <action selector="handlePanGestureRecognizer:" destination="JGx-9u-wF0" id="69j-7m-664"/>
+                        <action selector="handleTap:" destination="JGx-9u-wF0" id="sDd-9c-YSf"/>
                     </connections>
-                </panGestureRecognizer>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="903" y="523"/>
         </scene>
