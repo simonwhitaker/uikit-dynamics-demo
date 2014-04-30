@@ -12,59 +12,63 @@
 @property (nonatomic) IBOutlet UIView *alertView;
 @property (nonatomic) IBOutlet UIView *alertBackgroundView;
 @property (nonatomic) UIDynamicAnimator *animator;
-@property (nonatomic) UIGravityBehavior *gravity;
+//@property (nonatomic) UIGravityBehavior *gravity;
 @end
 
 @implementation SWAlertViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    UIView *alertView = self.alertView;
-    alertView.layer.cornerRadius = 10.0;
-    alertView.layer.masksToBounds = YES;
     
-    // Configure the animator
-    UIDynamicAnimator *animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
-    self.animator = animator;
+    // Give the alert view rounded corners. The kids these days love rounded corners.
+    self.alertView.layer.cornerRadius = 10.0;
+    self.alertView.layer.masksToBounds = YES;
     
-    // Configure the gravity behavior
-    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] init];
-    gravity.magnitude = 4;
-    [self.animator addBehavior:gravity];
-    self.gravity = gravity;
+    // Instantiate the animator
+    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    
+    // Hide the semi-opaque background view. (The alert view is a subview of the background view, so this hides the alert view too.)
     self.alertBackgroundView.alpha = 0.0;
 }
 
 - (IBAction)showAlertView:(id)sender {
-    UIView *alertView = self.alertView;
-    UIView *alertBackgroundView = self.alertBackgroundView;
-
-    alertView.center = CGPointMake(alertBackgroundView.bounds.size.width/2, alertBackgroundView.bounds.size.height/2);
+    // Position the alert view in the middle of its superview...
+    self.alertView.center = CGPointMake(self.alertBackgroundView.bounds.size.width/2, self.alertBackgroundView.bounds.size.height/2);
     
+    // ...then show it.
     [UIView animateWithDuration:0.2 animations:^{
         self.alertBackgroundView.alpha = 1.0;
     }];
 }
 
 - (IBAction)dismissAlertView:(id)sender {
-    UIView *alertView = self.alertView;
-    UIView *alertBackgroundView = self.alertBackgroundView;
+    // Instantiate a gravity behavior
+    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[self.alertView]];
     
-    [self.gravity addItem:alertView];
+    // The default magnitude of 1 feels a bit sluggish, let's beef it up.
+    gravity.magnitude = 4;
     
+    // When the alert view goes out of view, stop animating and dismiss the semi-opaque background view
     __weak __typeof(self) weakSelf = self;
-    self.gravity.action = ^{
-        if (!CGRectIntersectsRect(alertView.frame, weakSelf.view.frame)) {
-            [weakSelf.gravity removeItem:alertView];
+    gravity.action = ^{
+        __typeof(weakSelf) strongSelf = weakSelf;
+        if (!CGRectIntersectsRect(strongSelf.alertView.frame, strongSelf.alertBackgroundView.bounds)) {
+            
+            // Remove all behaviors from the animator; we don't need to animate anything now
+            [strongSelf.animator removeAllBehaviors];
+            
+            // Dismiss the semi-opaque background view
             [UIView animateWithDuration:0.1 animations:^{
-                alertBackgroundView.alpha = 0.0;
+                strongSelf.alertBackgroundView.alpha = 0.0;
             }];
         }
     };
+    
+    [self.animator addBehavior:gravity];
 }
 
 @end
