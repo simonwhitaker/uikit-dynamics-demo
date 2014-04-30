@@ -8,7 +8,7 @@
 
 #import "SWBannerViewController.h"
 
-@interface SWBannerViewController ()
+@interface SWBannerViewController () <UIDynamicAnimatorDelegate>
 @property (nonatomic, weak) IBOutlet UIView *bannerView;
 @property (nonatomic, weak) IBOutlet UILabel *bangLabel;
 @property (nonatomic) UIDynamicAnimator *animator;
@@ -19,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
+    self.animator.delegate = self;
     
     UIView *bannerView = self.bannerView;
     UILabel *bangLabel = self.bangLabel;
@@ -43,15 +44,9 @@
     [self.animator addBehavior:gravity];
     
     UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[bannerView]];
-    itemBehavior.elasticity = 0.5;
+    itemBehavior.elasticity = 0.4;
     [self.animator addBehavior:itemBehavior];
     
-    [UIView animateWithDuration:0.2 delay:2.0 options:0 animations:^{
-        bannerView.alpha = 0.0;
-    } completion:^(BOOL finished) {
-        [self.animator removeAllBehaviors];
-        [self resetBanner];
-    }];
 }
 
 - (void)resetBanner {
@@ -59,8 +54,17 @@
     CGRect bannerFrame = bannerView.frame;
     bannerFrame.origin.y = 0 - bannerFrame.size.height;
     bannerView.frame = bannerFrame;
+}
+
+#pragma mark - UIDynamicAnimatorDelegate methods
+
+- (void)dynamicAnimatorDidPause:(UIDynamicAnimator *)animator {
+    [animator removeAllBehaviors];
     
-    bannerView.alpha = 1.0;
+    // Wait a couple of seconds, then dismiss the banner
+    [UIView animateWithDuration:0.2 delay:2.0 options:0 animations:^{
+        [self resetBanner];
+    } completion:nil];
 }
 
 @end
