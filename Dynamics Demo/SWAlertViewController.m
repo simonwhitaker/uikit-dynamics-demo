@@ -12,7 +12,6 @@
 @property (nonatomic) IBOutlet UIView *alertView;
 @property (nonatomic) IBOutlet UIView *alertBackgroundView;
 @property (nonatomic) UIDynamicAnimator *animator;
-//@property (nonatomic) UIGravityBehavior *gravity;
 @end
 
 @implementation SWAlertViewController
