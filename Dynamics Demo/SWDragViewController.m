@@ -89,22 +89,17 @@ static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
             // Use a UIDynamicItemBehavior to continue the view moving with the same velocity as when we finished dragging
             UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
             [itemBehavior addLinearVelocity:velocity forItem:view];
-            
-            // And add some gravity to make it feel more physical - for example, if you fling the view upwards it'll eventually fall back down
-            UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[view]];
-            gravity.magnitude = 4;
-            [self.animator addBehavior:itemBehavior];
-            [self.animator addBehavior:gravity];
-            
+
             // Stop animating and dismiss the background view when the large view goes offscreen
-            __weak typeof(self) weakSelf = self;
-            __weak typeof(gravity) weakGravity = gravity;
-            gravity.action = ^{
+            __weak __typeof(self) weakSelf = self;
+            __weak __typeof(itemBehavior) weakItemBehavior = itemBehavior;
+            itemBehavior.action = ^{
                 if (!CGRectIntersectsRect(weakSelf.view.bounds, view.frame)) {
-                    [weakSelf.animator removeBehavior:weakGravity];
+                    [weakSelf.animator removeBehavior:weakItemBehavior];
                     [weakSelf dismissBackgroundView];
                 }
             };
+            [self.animator addBehavior:itemBehavior];
         } else {
             // They didn't fling the view with sufficient vim, so just snap it back into place
             UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:view snapToPoint:self.sourceImageView.center];
