@@ -74,7 +74,7 @@ static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
         self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:offset attachedToAnchor:[recognizer locationInView:self.view]];
         [self.animator addBehavior:self.attachmentBehavior];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
-        // Just move the attachment behavior's anchor point, let UIKit Dynamics animate the view acordingly.
+        // Just move the attachment behavior's anchor point, let UIKit Dynamics animate the view accordingly.
         CGPoint delta = [recognizer translationInView:self.view];
         self.attachmentBehavior.anchorPoint = CGPointApplyAffineTransform(self.attachmentBehavior.anchorPoint, CGAffineTransformMakeTranslation(delta.x, delta.y));
         [recognizer setTranslation:CGPointZero inView:self.view];
