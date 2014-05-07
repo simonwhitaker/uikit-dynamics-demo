@@ -108,6 +108,7 @@ static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
         } else {
             // They didn't fling the view with sufficient vim, so just snap it back into place
             UISnapBehavior *snapBehavior = [[UISnapBehavior alloc] initWithItem:view snapToPoint:self.sourceImageView.center];
+            snapBehavior.damping = 1;
             [self.animator addBehavior:snapBehavior];
         }
     }
