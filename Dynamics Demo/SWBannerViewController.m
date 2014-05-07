@@ -9,8 +9,8 @@
 #import "SWBannerViewController.h"
 
 @interface SWBannerViewController () <UIDynamicAnimatorDelegate>
-@property (nonatomic, weak) IBOutlet UIView *bannerView;
-@property (nonatomic, weak) IBOutlet UILabel *bangLabel;
+@property (nonatomic) IBOutlet UIView *bannerView;
+@property (nonatomic) IBOutlet UILabel *bangLabel;
 @property (nonatomic) UIDynamicAnimator *animator;
 @end
 
@@ -21,10 +21,8 @@
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self.view];
     self.animator.delegate = self;
     
-    UIView *bannerView = self.bannerView;
-    UILabel *bangLabel = self.bangLabel;
-    bangLabel.layer.cornerRadius = bangLabel.bounds.size.width / 2;
-    bangLabel.textColor = bannerView.backgroundColor;
+    self.bangLabel.layer.cornerRadius = self.bangLabel.bounds.size.width / 2;
+    self.bangLabel.textColor = self.bannerView.backgroundColor;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -32,28 +30,25 @@
 }
 
 - (IBAction)showBanner:(id)sender {
-    UIView *bannerView = self.bannerView;
+    [self.animator removeAllBehaviors];
     
-    UICollisionBehavior *collision = [[UICollisionBehavior alloc] initWithItems:@[bannerView]];
-    CGFloat floorY = bannerView.frame.size.height;
-    [collision addBoundaryWithIdentifier:@"floor" fromPoint:CGPointMake(0, floorY) toPoint:CGPointMake(CGRectGetMaxX(self.view.bounds), floorY)];
+    UICollisionBehavior *collision = [[UICollisionBehavior alloc] initWithItems:@[self.bannerView]];
+    CGFloat boundaryY = self.bannerView.frame.size.height;
+    [collision addBoundaryWithIdentifier:@"floor" fromPoint:CGPointMake(0, boundaryY) toPoint:CGPointMake(CGRectGetMaxX(self.view.bounds), boundaryY)];
     [self.animator addBehavior:collision];
     
-    
-    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[bannerView]];
+    UIGravityBehavior *gravity = [[UIGravityBehavior alloc] initWithItems:@[self.bannerView]];
     [self.animator addBehavior:gravity];
     
-    UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[bannerView]];
+    UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[self.bannerView]];
     itemBehavior.elasticity = 0.4;
     [self.animator addBehavior:itemBehavior];
-    
 }
 
 - (void)resetBanner {
-    UIView *bannerView = self.bannerView;
-    CGRect bannerFrame = bannerView.frame;
+    CGRect bannerFrame = self.bannerView.frame;
     bannerFrame.origin.y = 0 - bannerFrame.size.height;
-    bannerView.frame = bannerFrame;
+    self.bannerView.frame = bannerFrame;
 }
 
 #pragma mark - UIDynamicAnimatorDelegate methods
