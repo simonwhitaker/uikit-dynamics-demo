@@ -54,7 +54,7 @@
     // When the alert view goes out of view, stop animating and dismiss the semi-opaque background view
     __weak __typeof(self) weakSelf = self;
     gravity.action = ^{
-        __typeof(weakSelf) strongSelf = weakSelf;
+        __strong __typeof(weakSelf) strongSelf = weakSelf;
         if (!CGRectIntersectsRect(strongSelf.alertView.frame, strongSelf.alertBackgroundView.bounds)) {
             
             // Remove all behaviors from the animator; we don't need to animate anything now

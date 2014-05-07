@@ -94,9 +94,11 @@ static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
             __weak __typeof(self) weakSelf = self;
             __weak __typeof(itemBehavior) weakItemBehavior = itemBehavior;
             itemBehavior.action = ^{
+                __strong __typeof(weakSelf) strongSelf = weakSelf;
+                __strong __typeof(weakItemBehavior) strongItemBehavior = weakItemBehavior;
                 if (!CGRectIntersectsRect(weakSelf.view.bounds, view.frame)) {
-                    [weakSelf.animator removeBehavior:weakItemBehavior];
-                    [weakSelf dismissBackgroundView];
+                    [strongSelf.animator removeBehavior:strongItemBehavior];
+                    [strongSelf dismissBackgroundView];
                 }
             };
             [self.animator addBehavior:itemBehavior];
