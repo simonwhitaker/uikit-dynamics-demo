@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>3646ABBA-0237-4562-A1F9-BCD93278A35C</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Dynamics Demo</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>DFA61B1E-296B-4494-99FF-2DBEC6128702</key>
+		<string>ssh://github.com/simonwhitaker/ioscon-2014-demo.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Dynamics Demo.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>DFA61B1E-296B-4494-99FF-2DBEC6128702</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/simonwhitaker/ioscon-2014-demo.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>DFA61B1E-296B-4494-99FF-2DBEC6128702</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>DFA61B1E-296B-4494-99FF-2DBEC6128702</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Dynamics Demo</string>
+		</dict>
+	</array>
+</dict>
+</plist>
