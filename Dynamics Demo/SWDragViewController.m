@@ -8,7 +8,12 @@
 
 #import "SWDragViewController.h"
 
-static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
+static const CGFloat kDismissalSwipeSpeedThreshold = 100.0;
+
+/// Returns the scalar absolute magnitude (in pt/s) of a given velocity
+CGFloat speed(CGPoint velocity) {
+    return sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
+}
 
 @interface SWDragViewController () <UIDynamicAnimatorDelegate>
 @property (nonatomic) UIDynamicAnimator *animator;
@@ -85,7 +90,7 @@ static const CGFloat kDismissalSwipeVelocityThreshold = 100.0;
         [self.animator removeBehavior:self.attachmentBehavior];
         
         // If velocity in simple points/second is higher than a threshold, fling the view offscreen
-        if (sqrt(velocity.x * velocity.x + velocity.y * velocity.y) > kDismissalSwipeVelocityThreshold) {
+        if (speed(velocity) > kDismissalSwipeSpeedThreshold) {
             // Use a UIDynamicItemBehavior to continue the view moving with the same velocity as when we finished dragging
             UIDynamicItemBehavior *itemBehavior = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
             [itemBehavior addLinearVelocity:velocity forItem:view];
