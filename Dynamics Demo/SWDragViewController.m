@@ -76,16 +76,16 @@ CGFloat speed(CGPoint velocity) {
         UIOffset offset = UIOffsetMake(p.x - view.bounds.size.width / 2, p.y - view.bounds.size.height / 2);
         
         // Create an attachment behavior that connects the point we first dragged to an anchor point. We'll update the anchor point as we drag, and let UIKit Dynamics do the rest.
-        self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:offset attachedToAnchor:[recognizer locationInView:self.view]];
+        self.attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view offsetFromCenter:offset attachedToAnchor:[recognizer locationInView:self.animator.referenceView]];
         [self.animator addBehavior:self.attachmentBehavior];
     } else if (recognizer.state == UIGestureRecognizerStateChanged) {
         // Just move the attachment behavior's anchor point, let UIKit Dynamics animate the view accordingly.
-        CGPoint delta = [recognizer translationInView:self.view];
+        CGPoint delta = [recognizer translationInView:self.animator.referenceView];
         self.attachmentBehavior.anchorPoint = CGPointApplyAffineTransform(self.attachmentBehavior.anchorPoint, CGAffineTransformMakeTranslation(delta.x, delta.y));
-        [recognizer setTranslation:CGPointZero inView:self.view];
+        [recognizer setTranslation:CGPointZero inView:self.animator.referenceView];
     } else if (recognizer.state == UIGestureRecognizerStateEnded || recognizer.state == UIGestureRecognizerStateCancelled || recognizer.state == UIGestureRecognizerStateFailed) {
         // Check the velocity we were dragging at.
-        CGPoint velocity = [recognizer velocityInView:self.view];
+        CGPoint velocity = [recognizer velocityInView:self.animator.referenceView];
 
         [self.animator removeBehavior:self.attachmentBehavior];
         
